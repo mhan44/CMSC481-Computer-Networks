@@ -3,6 +3,14 @@ Description: A simple client-server system, where the client is used to chat wit
     2. Server 2 is a multi-process server that will “fork” a process for every new client it receives. Multiple clients should be able to simultaneously chat with the server.
     3. Server 3 is a single process server that uses the "select" system call to handle multiple clients. Again, much like server2, server3 will also be able to handle multiple clients concurrently.
 
+How to run:
+    1. Select a server you want to use, and in a terminal run:      python server1/2/3.py <port number>
+    2. In a separate terminal connect to your server by running:    python client.py <IP Address> <port number> 
+    3. If running server 2 or 3, or error checking for server 1, run in a third terminal: python client.py <IP Address> <port number> 
+    4. Enter into the client terminals a word to retrieve the defintion of.
+    5. Once finished with a client, ctrl+c to terminate, and continue with other clients if desired.
+    6. Once finished with the program and server, ctrl+c in the server terminal to terminate, program is finished.
+
 Socket Project Clarifications
 Python
 * Forking should use the os.fork() function
@@ -14,4 +22,4 @@ General process of the server: create, bind, listen, accept
     2. bind() on the IP address and port we want to listen on to reserve the services
     3. listen() on the IP address and port so that the socket can receive connections from clients
     4. accept() a client given socket_fd by calling socket_fd.accept() so that a connection between client/server is created
-    5. Use the return values from accept() to retrieve data from the client, and send a response
+    5. Use the return values from accept() to retrieve data from the client using recv(), and send a response using send()
