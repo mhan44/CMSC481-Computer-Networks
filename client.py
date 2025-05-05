@@ -31,12 +31,12 @@ if __name__ == "__main__":
             socket_fd.send(word.encode())
             
             response = socket_fd.recv(BUFFER_SIZE)
-            print("Server replied: ", response.decode())
+            print("Server replied - The definition of " + word + ":", response.decode())
 
     except KeyboardInterrupt:
         print("\nClient severing connection(forcibly closed: ctrl+c).")
-        socket_fd.shutdown(socket.SHUT_WR)
+        socket_fd.shutdown(socket.SHUT_WR) #Cleanly shutdown as to not cause exception that gets sent to server.
+        socket_fd.close()
 
     print("Client finished.")
-    socket_fd.close()
     

@@ -2,6 +2,7 @@ import socket
 import select
 import os
 import sys  #for command line inputs
+import json
 
 BUFFER_SIZE = 1024 #buffer size
 
@@ -11,6 +12,11 @@ if __name__ == "__main__":
         print("Usage: python server1.py <port number>") #print usage message 
         sys.exit(1) #return code 1 = error 
     port = int(sys.argv[1]) #argv[0] = script name; server1.py
+
+    #Safe open dictioanry json file, and close after reading
+    f = open("dictionary_compact.json", "r")
+    dictionary = json.load(f)
+    f.close()
 
     #1. Create server socket
     #Convert C to python: int my_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -67,11 +73,18 @@ if __name__ == "__main__":
                     if not data_raw: #if data is NULL, client terminated via ctrl+c
                         print("Client", current_addr, "closed conection.")    
                         current_socket.close() #Close connection
-                        break #close connection with this client
+                        current_socket = None #close connection with this client
+                        continue
                     data = data_raw.decode()
                     print("Server 1 received data from client:", data)
-                    response = "Definition of " + data #Generate response for client's word
-                    current_socket.send(response.encode()) #Send response to client, needs bytes therefore convert via .encode()
+
+                    response = dictionary.get(data) #Generate response for client's word
+                    if response:
+                        print("Definition found.")
+                        current_socket.send(response.encode()) #Send response to client, needs bytes therefore convert via .encode()
+                    else:
+                        print("Definition not found.")
+                        current_socket.send("Definition not found.".encode()) 
     except KeyboardInterrupt:   #If ctrl+c, break loop and stop listening for clients
         print("Server 1 severing connection(forcibly closed: ctrl+c).")
 
