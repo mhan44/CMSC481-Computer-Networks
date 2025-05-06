@@ -50,6 +50,7 @@ A simple client-server system, where the client is used to chat with a "dictiona
     Client severing connection(forcibly closed: ctrl+c).
     Client finished.
     
+    ```
     python client.py 127.0.0.1 5000
     Server replied: Error: Server busy. Multiple clients not allowed.
 
