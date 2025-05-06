@@ -50,10 +50,45 @@ A simple client-server system, where the client is used to chat with a "dictiona
     Client severing connection(forcibly closed: ctrl+c).
     Client finished.
     
-    ```
     python client.py 127.0.0.1 5000
     Server replied: Error: Server busy. Multiple clients not allowed.
-
+    
 <h2>Server 2 Test Cases</h2>
-1. 
+
+1. Multiple clients - expected result: server sends correct definitions of words for all clients, and accepts all clients
+    
+    ```
+    python client.py 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+
+    python client.py 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+
+<h2>Server 3 Test Cases</h2>
+
+1. Multiple clients - expected result: server sends correct definitions of words for all clients, and accepts all clients
+    
+    ```
+    python client.py 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+
+    python client.py 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+
 
