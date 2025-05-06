@@ -51,8 +51,8 @@ if __name__ == "__main__":
             #Parse through the readable sockets, if the readable socket is socket_fd (server socket), then establish a new connection
             #if there is no client connected, or reject the new client since this is a single server and only allows 1 client at a time.
             for socket in readable:
+                #If the server sockeet socket_fd is readable, a new connection is ready to accept
                 if socket == socket_fd:
-                    #no connection currently, establish new connection to client
                     #4. accept() a client given socket_fd by calling accept() so that a connection between server and client is 
                     #established in python, socket.accept() returns 2 values, socket for data retrieval and client addr
                     client_socket, client_addr = socket_fd.accept()
@@ -60,7 +60,8 @@ if __name__ == "__main__":
                     print("Server 1 connected with:", client_addr)
                     clients.append(client_socket)
                     sockets.append(client_socket)
-                elif socket in clients: #if the current readable socket is the client socket, accept incoming data and send response
+                #if the current socket is readable and it is a client socket already connected, handle communication
+                elif socket in clients:
                     #5. Receive data from client socket
                     data_raw = socket.recv(BUFFER_SIZE) #recv() returns bytes, to convert to a string, use .decode()
                     if not data_raw: #if data is NULL, client terminated via ctrl+c
