@@ -11,6 +11,7 @@ f = open("dictionary_compact.json", "r")
 dictionary = json.load(f)
 f.close()
 
+#Define a function that handles client communication, because Process() needs a target
 def connect(current_socket, current_addr):
     while True:
         #5. Receive data from client socket
