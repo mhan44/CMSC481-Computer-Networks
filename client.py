@@ -3,7 +3,7 @@ import select
 import os
 import sys  #for command line inputs
 
-BUFFER_SIZE = 1024
+BUFFER_SIZE = 8192
 
 if __name__ == "__main__":
     #Command line input
@@ -27,11 +27,11 @@ if __name__ == "__main__":
     #Create infinite loop that is only stopped with ctrl+c
     try:
         while True:
-            word = input("Please enter word to be defined: ")
+            word = input("Please enter word to be defined: ").lower()   #dictionary only has lowercase keys
             socket_fd.send(word.encode())
             
             response = socket_fd.recv(BUFFER_SIZE)
-            print("Server replied - The definition of " + word + ":", response.decode())
+            print("Server replied - The definition(s) of " + word + ": ", response.decode())
 
     except KeyboardInterrupt:
         print("\nClient severing connection(forcibly closed: ctrl+c).")

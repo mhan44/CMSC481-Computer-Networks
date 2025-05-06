@@ -3,7 +3,7 @@ Description: A simple client-server system, where the client is used to chat wit
 2. Server 2 is a multi-process server that will “fork” a process for every new client it receives. Multiple clients should be able to simultaneously chat with the server.
 3. Server 3 is a single process server that uses the "select" system call to handle multiple clients. Again, much like server2, server3 will also be able to handle multiple clients concurrently.
 
-How to run:
+How to run/compile:
 1. Select a server you want to use, and in a terminal run:      python server1/2/3.py (port number)
 2. In a separate terminal connect to your server by running:    python client.py (IP Address) (port number) 
 3. If running server 2 or 3, or error checking for server 1, run in a third terminal: python client.py (IP Address) (port number) 
@@ -13,7 +13,7 @@ How to run:
 
 Socket Project Clarifications
 Python
-* Forking should use the os.fork() function
+* Since the os.fork() Python method is only available on Unix systems, using the multiprocessing package instead is acceptable.
 * Selecting sockets should use the select python library
 * Socket interaction must use the socket library
 
@@ -23,3 +23,30 @@ General process of the server: create, bind, listen, accept
 3. listen() on the IP address and port so that the socket can receive connections from clients
 4. accept() a client given socket_fd by calling socket_fd.accept() so that a connection between client/server is created
 5. Use the return values from accept() to retrieve data from the client using recv(), and send a response using send()
+
+Server 1 Test Cases
+1. Single client - expected result: server sends correct definitions of words
+    $ ./client 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+    Client severing connection(forcibly closed: ctrl+c).
+    Client finished.
+2. Double client - expected result: server rejects second client and the second client gets an error message for busy
+    > ./client 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+    Client severing connection(forcibly closed: ctrl+c).
+    Client finished.
+
+    > python client.py 127.0.0.1 5000
+    Server replied: Error: Server busy. Multiple clients not allowed.
+
+Server 2 Test cases:
+1. 
+

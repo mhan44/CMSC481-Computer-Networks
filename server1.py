@@ -1,10 +1,9 @@
 import socket
 import select
-import os
 import sys  #for command line inputs
 import json
 
-BUFFER_SIZE = 1024 #buffer size
+BUFFER_SIZE = 8192 #buffer size
 
 if __name__ == "__main__":
     #Command line input
@@ -81,7 +80,7 @@ if __name__ == "__main__":
                     response = dictionary.get(data) #Generate response for client's word
                     if response:
                         print("Definition found.")
-                        current_socket.send(response.encode()) #Send response to client, needs bytes therefore convert via .encode()
+                        current_socket.send((response + "\n").encode()) #Send response to client, needs bytes therefore convert via .encode()
                     else:
                         print("Definition not found.")
                         current_socket.send("Definition not found.".encode()) 
