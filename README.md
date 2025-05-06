@@ -38,8 +38,7 @@ A simple client-server system, where the client is used to chat with a "dictiona
     Client finished.<br>
 
 2. Double client - expected result: server rejects second client and the second client gets an error message for busy
-
-    > >python client.py 127.0.0.1 5000<br>
+    > python client.py 127.0.0.1 5000<br>
     Connected to server<br>
     Please enter the word that you need defined: word1<br>
     Server replied: definition of word1<br>
@@ -48,7 +47,7 @@ A simple client-server system, where the client is used to chat with a "dictiona
     Client severing connection(forcibly closed: ctrl+c).<br>
     Client finished.</pre>
     
-    > >python client.py 127.0.0.1 5000<br>
+    > python client.py 127.0.0.1 5000<br>
     Server replied: Error: Server busy. Multiple clients not allowed.<br>
 
 <h2>Server 2 Test Cases</h2>
