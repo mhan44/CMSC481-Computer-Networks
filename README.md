@@ -40,7 +40,7 @@ A simple client-server system, where the client is used to chat with a "dictiona
 
 2. Double client - expected result: server rejects second client and the second client gets an error message for busy
     
-    ```bash
+    ```
     python client.py 127.0.0.1 5000
     Connected to server
     Please enter the word that you need defined: word1
@@ -50,7 +50,6 @@ A simple client-server system, where the client is used to chat with a "dictiona
     Client severing connection(forcibly closed: ctrl+c).
     Client finished.
     
-    ```bash
     python client.py 127.0.0.1 5000
     Server replied: Error: Server busy. Multiple clients not allowed.
 
