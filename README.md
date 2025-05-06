@@ -26,26 +26,26 @@ General process of the server: create, bind, listen, accept
 
 Server 1 Test Cases
 1. Single client - expected result: server sends correct definitions of words
-    $ ./client 127.0.0.1 5000
-    Connected to server
-    Please enter the word that you need defined: word1
-    Server replied: definition of word1
-    Please enter the word that you need defined: word 2
-    Server replied: definition of word 2
-    Client severing connection(forcibly closed: ctrl+c).
-    Client finished.
+    > ./client 127.0.0.1 5000\
+    Connected to server\
+    Please enter the word that you need defined: word1\
+    Server replied: definition of word1\
+    Please enter the word that you need defined: word 2\
+    Server replied: definition of word 2\
+    Client severing connection(forcibly closed: ctrl+c).\
+    Client finished.\
 2. Double client - expected result: server rejects second client and the second client gets an error message for busy
-    > ./client 127.0.0.1 5000
-    Connected to server
-    Please enter the word that you need defined: word1
-    Server replied: definition of word1
-    Please enter the word that you need defined: word 2
-    Server replied: definition of word 2
-    Client severing connection(forcibly closed: ctrl+c).
-    Client finished.
+    > ./client 127.0.0.1 5000\
+    Connected to server\
+    Please enter the word that you need defined: word1\
+    Server replied: definition of word1\
+    Please enter the word that you need defined: word 2\
+    Server replied: definition of word 2\
+    Client severing connection(forcibly closed: ctrl+c).\
+    Client finished.\
 
-    > python client.py 127.0.0.1 5000
-    Server replied: Error: Server busy. Multiple clients not allowed.
+    > python client.py 127.0.0.1 5000\
+    Server replied: Error: Server busy. Multiple clients not allowed.\
 
 Server 2 Test cases:
 1. 

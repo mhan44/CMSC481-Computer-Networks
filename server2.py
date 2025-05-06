@@ -4,7 +4,7 @@ import select
 import sys  #for command line inputs
 import json
 
-BUFFER_SIZE = 1024 #buffer size
+BUFFER_SIZE = 8192 #buffer size
 
 #Safe open dictioanry json file, and close after reading
 f = open("dictionary_compact.json", "r")
