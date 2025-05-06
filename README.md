@@ -5,6 +5,7 @@ A simple client-server system, where the client is used to chat with a "dictiona
     3. Server 3 is a single process server that uses the "select" system call to handle multiple clients. Again, much like server2, server3 will also be able to handle multiple clients concurrently.<br>
 
 <h2>How to run/compile</h2>
+
 1. Select a server you want to use, and in a terminal run:    python server1/2/3.py (port number)<br>
 2. In a separate terminal connect to your server by running:    python client.py (IP Address) (port number) <br>
 3. If running server 2 or 3, or error checking for server 1, run in a third terminal: python client.py (IP Address) (port number) <br>
@@ -13,11 +14,13 @@ A simple client-server system, where the client is used to chat with a "dictiona
 6. Once finished with the program and server, ctrl+c in the server terminal to terminate, program is finished.<br>
 
 <h2>Socket Project Clarifications</h2>
+
 * Since the os.fork() Python method is only available on Unix systems, using the multiprocessing package instead is acceptable.<br>
 * Selecting sockets should use the select python library<br>
 * Socket interaction must use the socket library<br>
 
 <h2>General process of building a server/client connection: create, bind, listen, accept, recv, send</h2>
+
 1. Create server socket socket_fd<br>
 2. bind() on the IP address and port we want to listen on to reserve the services<br>
 3. listen() on the IP address and port so that the socket can receive connections from clients<br>
