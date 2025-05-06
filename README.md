@@ -1,8 +1,8 @@
 <h2>Description</h2>
 A simple client-server system, where the client is used to chat with a "dictionary" server. The protocol between the server and client first starts with the server being started on a dedicated port. Any client that wants to conncet to the server needs to know the port and IP address of the server. The server also needs access to the dictionary file. The client program is then started (using server IP and port number passed through command line). The client connects to the server then asks the user for input, the user enters a single word as input, which is then sent to the server via connected socket. The server reads the user's input from the client socket, retrieves defintion from the dictionary file, then sends the result back to the client. The client should display the server's rely to the user, prompt for the next word, until the user terminates the client using ctrl+c. This project programs 3 versions of the server:<br>
-1. Server 1 is a single process server that can handle only 1 client at a time. If a second client tries to chat with the server while one client's session is already in progress, the second client's socket operations should see an error.<br>
-2. Server 2 is a multi-process server that will “fork” a process for every new client it receives. Multiple clients should be able to simultaneously chat with the server.<br>
-3. Server 3 is a single process server that uses the "select" system call to handle multiple clients. Again, much like server2, server3 will also be able to handle multiple clients concurrently.<br>
+    1. Server 1 is a single process server that can handle only 1 client at a time. If a second client tries to chat with the server while one client's session is already in progress, the second client's socket operations should see an error.<br>
+    2. Server 2 is a multi-process server that will “fork” a process for every new client it receives. Multiple clients should be able to simultaneously chat with the server.<br>
+    3. Server 3 is a single process server that uses the "select" system call to handle multiple clients. Again, much like server2, server3 will also be able to handle multiple clients concurrently.<br>
 
 <h2>How to run/compile</h2>
 1. Select a server you want to use, and in a terminal run:    python server1/2/3.py (port number)<br>
