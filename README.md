@@ -34,18 +34,18 @@ A simple client-server system, where the client is used to chat with a "dictiona
     Server replied: definition of word 2<br>
     Client severing connection(forcibly closed: ctrl+c).<br>
     Client finished.<br>
-2. Double client - expected result: server rejects second client and the second client gets an error message for busy<br>
-    > python client.py 127.0.0.1 5000<br>
-    Connected to server<br>
-    Please enter the word that you need defined: word1<br>
-    Server replied: definition of word1<br>
-    Please enter the word that you need defined: word 2<br>
-    Server replied: definition of word 2<br>
-    Client severing connection(forcibly closed: ctrl+c).<br>
-    Client finished.<br>
+<pre>2. Double client - expected result: server rejects second client and the second client gets an error message for busy<br>
+    > python client.py 127.0.0.1 5000
+    Connected to server
+    Please enter the word that you need defined: word1<
+    Server replied: definition of word1
+    Please enter the word that you need defined: word 2
+    Server replied: definition of word 2
+    Client severing connection(forcibly closed: ctrl+c).
+    Client finished.</pre>
 
-    > python client.py 127.0.0.1 5000<br>
-    Server replied: Error: Server busy. Multiple clients not allowed.<br>
+    python client.py 127.0.0.1 5000
+    Server replied: Error: Server busy. Multiple clients not allowed.
 
 <h2>Server 2 Test Cases</h2>
 1. <br>
